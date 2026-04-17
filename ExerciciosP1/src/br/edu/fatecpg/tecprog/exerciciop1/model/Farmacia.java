@@ -6,11 +6,47 @@ public class Farmacia {
 	private double[] precos;
 	private int quantidade;
 
-	public Farmacia(int tamanho) {
-		nomesMedicamentos = new String[tamanho];
-		diasParaVencimento = new int[tamanho];
-		precos = new double[tamanho];
-		quantidade = 0;
+	public Farmacia(String[] nomes, int[] dias, double[] precos) {
+		this.nomesMedicamentos = nomes;
+		this.diasParaVencimento = dias;
+		this.precos = precos;
+		this.quantidade = nomes.length;
+	}
+
+	public void listarMedicamentos() {
+		System.out.println("=== Medicamentos ===");
+		for (int i = 0; i < this.quantidade; i++) {
+			System.out.println(this.nomesMedicamentos[i] + " | Dias: " + this.diasParaVencimento[i] + " | Preço: R$"
+					+ this.precos[i]);
+		}
+	}
+
+	public void calcularMediaDiasVencimento() {
+		int soma = 0;
+		for (int i = 0; i < this.quantidade; i++)
+			soma += this.diasParaVencimento[i];
+		System.out.println("\nMédia de Dias para Vencimento: " + soma / this.quantidade + "\n");
+	}
+
+	public void listarProximosVencer() {
+		System.out.println("=== Próximos de Vencer ===");
+		for (int i = 0; i < this.quantidade; i++) {
+			if (this.diasParaVencimento[i] < 5) {
+				System.out.println(this.nomesMedicamentos[i] + " | Dias restantes: " + this.diasParaVencimento[i]);
+			}
+		}
+	}
+
+	public void aplicarDescontoProximosVencer() {
+		System.out.println("\n\n=== Desconto de Vencer ===");
+		for (int i = 0; i < this.quantidade; i++) {
+			if (this.diasParaVencimento[i] < 5) {
+				this.precos[i] *= 0.5;
+				System.out.println(this.nomesMedicamentos[i] + " | Dias: " + this.diasParaVencimento[i] + " | Novo Preço: R$"
+						+ this.precos[i]);
+			}
+		}
+		System.out.println("Desconto de 50% aplicado!");
 	}
 
 	public void adicionarMedicamento(String nome, int dias, double preco) {
@@ -18,38 +54,6 @@ public class Farmacia {
 		diasParaVencimento[quantidade] = dias;
 		precos[quantidade] = preco;
 		quantidade++;
-	}
-
-	public void listarMedicamentos() {
-		System.out.println("=== Medicamentos ===");
-		for (int i = 0; i < quantidade; i++) {
-			System.out.println(nomesMedicamentos[i] + " | Dias: " + diasParaVencimento[i] + " | Preço: R$" + precos[i]);
-		}
-	}
-
-	public double calcularMediaDias() {
-		int soma = 0;
-		for (int i = 0; i < quantidade; i++)
-			soma += diasParaVencimento[i];
-		return (double) soma / quantidade;
-	}
-
-	public void listarProximosVencer() {
-		System.out.println("=== Próximos de Vencer ===");
-		for (int i = 0; i < quantidade; i++) {
-			if (diasParaVencimento[i] < 5) {
-				System.out.println(nomesMedicamentos[i] + " | Dias restantes: " + diasParaVencimento[i]);
-			}
-		}
-	}
-
-	public void aplicarDescontoProximosVencer() {
-		for (int i = 0; i < quantidade; i++) {
-			if (diasParaVencimento[i] < 5) {
-				precos[i] = precos[i] * 0.5;
-			}
-		}
-		System.out.println("Desconto de 50% aplicado!");
 	}
 
 	public void venderMedicamento(String nome) {
