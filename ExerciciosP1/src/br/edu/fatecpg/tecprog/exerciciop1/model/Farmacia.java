@@ -49,14 +49,8 @@ public class Farmacia {
 		System.out.println("Desconto de 50% aplicado!");
 	}
 
-	public void adicionarMedicamento(String nome, int dias, double preco) {
-		nomesMedicamentos[quantidade] = nome;
-		diasParaVencimento[quantidade] = dias;
-		precos[quantidade] = preco;
-		quantidade++;
-	}
-
 	public void venderMedicamento(String nome) {
+		System.out.println("\n\n=== Venda de Medicamento ===");
 		for (int i = 0; i < quantidade; i++) {
 			if (nomesMedicamentos[i].equalsIgnoreCase(nome)) {
 				for (int j = i; j < quantidade - 1; j++) {
