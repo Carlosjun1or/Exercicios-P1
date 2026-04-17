@@ -33,6 +33,6 @@ public class Main {
 		minhaFarmacia.calcularMediaDiasVencimento();
 		minhaFarmacia.listarProximosVencer();
 		minhaFarmacia.aplicarDescontoProximosVencer();
-
+		minhaFarmacia.venderMedicamento("Dipirona");
 	}
 }
