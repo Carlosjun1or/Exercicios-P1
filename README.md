@@ -33,7 +33,7 @@ src/
                     │   ├── Aluno.java
                     │   └── Farmacia.java
                     └── view/
-                        └── Main.java (Ponto de Entrada)
+                        └── Main.java
 ```
 
 ## 🧱 Exercícios e Modelagem Orientada a Objetos
